@@ -1,7 +1,7 @@
-
+from .views import get_lottery, post_ticket, get_history
 
 urlpatterns = [
-    # User
-    # TODO revers user and users
-    path("user/", HandleUser.as_view()),
+    path("lottery/", get_lottery),
+    path("ticket/", post_ticket),
+    path("history/", get_history),
 ]
