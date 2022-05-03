@@ -5,7 +5,7 @@ from django.utils.timezone import now, timedelta
 class Lottery(models.Model):
     lotery_nb = models.AutoField(primary_key=True)
     lotery_name = models.CharField(max_length=255, default="Lottery")
-    lotery_address = models.CharField(max_length=255, default="0xfasdf")
+    lotery_wallet_address = models.CharField(max_length=255, default="0xfasdf")
     date_start = models.DateTimeField(default=now)
     date_end = models.DateTimeField(default=now)
     duration = models.IntegerField(default=7)
@@ -21,7 +21,7 @@ class Lottery(models.Model):
 
 class Ticket(models.Model):
     ticket_holder_wallet_address = models.CharField(max_length=128)
-    date_start = models.DateTimeField(default=now)
+    date = models.DateTimeField(default=now)
     lotery_nb = models.ForeignKey(
         Lottery, related_name="tickets", on_delete=models.CASCADE
     )
@@ -45,10 +45,10 @@ class Price(models.Model):
 class Winner(models.Model):
 
     lotery_nb = models.ForeignKey(
-        Lottery, related_name="winner", on_delete=models.CASCADE
+        Lottery, related_name="winners", on_delete=models.CASCADE
     )
-    ticket = models.ForeignKey(Ticket, related_name="winner", on_delete=models.CASCADE)
-    price = models.ForeignKey(Price, related_name="winner", on_delete=models.CASCADE)
+    ticket = models.ForeignKey(Ticket, related_name="winners", on_delete=models.CASCADE)
+    price = models.ForeignKey(Price, related_name="winners", on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.lotery_nb)

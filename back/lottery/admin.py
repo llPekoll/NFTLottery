@@ -27,7 +27,17 @@ class TicketAdmin(admin.ModelAdmin):
 @admin.register(Lottery)
 class LotteryAdmin(admin.ModelAdmin):
     model = Lottery
-
+    list_per_page = 10
+    list_display = [
+        "__str__",
+        "lotery_name",
+        "lotery_wallet_address",
+        "date_start",
+        "ticket_price",
+    ]
+    ordering = ["ticket_price"]
+    search_fields = ["lotery_name", "lotery_address"]
+    readonly_fields = ["date_end"]
     inlines = [
         PriceInline,
     ]

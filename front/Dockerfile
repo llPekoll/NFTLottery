@@ -1,18 +1,15 @@
-
 FROM node:14-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /lottery
 
-COPY app/package.json ./
+COPY lottery/package.json /lottery
 
 RUN yarn install
 
-COPY app/. ./
+COPY lottery/. /lottery
 
 RUN yarn run build
-WORKDIR /app
+WORKDIR /lottery
 RUN rm -rf node_modules 
 
 EXPOSE 3000
-
-CMD [ "node", "build" ]
