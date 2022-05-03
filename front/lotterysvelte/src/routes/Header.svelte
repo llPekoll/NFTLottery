@@ -29,11 +29,11 @@
 </script>
 
 <section class="px-20 py-10">
-	<div class="float-left text-3xl font-semibold italic pt-2 drop-shadow-xl">
+	<div class="float-left text-3xl  italic pt-2 drop-shadow-xl">
         <img src="tgf-URPS.png" alt="logo" class="w-16">
     </div>
 	<div class="float-right flex oo">
-		<div class="rounded-full border-4 border-rose-600 p-2 bg-yellow-300 z-10 drop-shadow-xl">
+		<div class="rounded-full border-2 border-rose-600 p-2 bg-gradient-to-br from-pink-500 to-orange-400 z-10 drop-shadow-xl">
 			<svg width="2em" height="2em" viewBox="0 0 256 256"
 				><path
 					fill=""
@@ -44,7 +44,7 @@
 		<button on:click={connectWallet}>
             
 			<div
-				class="text-xl text-rose-600 font-semibold rounded-full border-4 border-rose-600 px-10 h-10 mt-2 -ml-8 z-0 pt-1 bg-yellow-300 drop-shadow-xl"
+				class="text-xl text-white font-semibold rounded-full border-2 border-rose-600 px-10 h-10 mt-0.5 -ml-8 z-0 pt-1 bg-gradient-to-br from-pink-500 to-orange-400 drop-shadow-xl"
 			>
 				<p class="">
 					{amount}
@@ -56,7 +56,7 @@
 </section>
 <style>
     path{
-     @apply fill-rose-600;
+     @apply fill-white;
     }
     .oo{
         transform: scale(1.5);

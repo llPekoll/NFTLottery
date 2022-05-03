@@ -275,9 +275,9 @@
 		</svg>
 	</div>
 </section>
-<section>
+<section class="winner text-yellow-400">
 
-	<h2 class="text-4xl text-center mx-auto">Last Winners:</h2>
+	<h2 class="text-4xl text-center mx-auto ">Last Winners:</h2>
 
 	<ol class="text-3xl text-left w-1/2 mx-auto py-10 font-normal">
 		<li class="text-5xl py-2 drop-shadow-xl">
@@ -292,13 +292,20 @@
 	</ol>
 
 </section>
+<footer class="winner text-center mx-auto py-10 text-3xl">
+	contact@fasdf.com
+</footer>
 <style>
 	svg{
-		fill:white
+		fill:#aa7e40;
 	}
 	.hero
 	{
 		font-family: 'Kanit', sans-serif;
-		background-image: linear-gradient(110deg, #3D516D 47%, #546C8E 91%);
+		background: rgb(105,50,0);
+background: radial-gradient(circle, rgba(105,50,0,1) 0%, rgba(26,0,5,1) 100%);
+	}
+	.winner{
+		background-color:  #aa7e40;
 	}
 </style>
