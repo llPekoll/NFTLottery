@@ -35,7 +35,9 @@
   },
   "type": "module",
   "dependencies": {
+    "@openzeppelin/contracts": "^4.6.0",
     "@sveltejs/adapter-node": "^1.0.0-next.73",
-    "forever": "^4.0.3"
+    "forever": "^4.0.3",
+    "svelte-web3": "^3.4.1"
   }
 }

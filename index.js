@@ -245,8 +245,6 @@ const handleAccountsChanged = (acc) => {
     account = acc;
 }
 
-
-
 const connectWallet = async () => {
     accounts = await window.ethereum.request({
         method: "eth_requestAccounts"
@@ -267,7 +265,6 @@ const connectWallet = async () => {
     console.log("balance")
     let amount = parseInt(balance) / Math.pow(10, 18)
     document.getElementById("amount").innerHTML = `${amount} BNB`
-
 }
 
 
@@ -279,7 +276,6 @@ const SendTransaction = async () => {
         "gas": Number(21000).toString(16),
         "gasPrice": Number(2500000).toString(16),
         "value": Number(1000000000000000).toString(16),
-        // "data": subContractAddress
     }]
     let transaction = await window.ethereum.request({
         method: "eth_sendTransaction",
@@ -293,7 +289,6 @@ const CheckFromContract = async () => {
     let amount = bal.toString() / Math.pow(10, 9)
     document.getElementById("amount").innerHTML = `${amount} $NFTL`
     console.log(`${amount} $NFTL`)
-
 }
 
 

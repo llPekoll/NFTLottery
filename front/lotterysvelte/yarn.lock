@@ -526,6 +526,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@openzeppelin/contracts@^4.6.0":
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.6.0.tgz#c91cf64bc27f573836dba4122758b4743418c1b3"
+  integrity sha512-8vi4d50NNya/bQqCmaVzvHNmwHvS0OBKb7HNtuNwEE3scXWrP31fKQoGxNMT+KbzmrNZzatE3QK5p2gFONI/hg==
+
 "@playwright/test@^1.21.0":
   version "1.21.1"
   resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.21.1.tgz#2b55676fc45cfa013537a98ff7c3fdd1cb44256b"
@@ -4021,7 +4026,20 @@ svelte-preprocess@^4.0.0, svelte-preprocess@^4.10.1:
     sorcery "^0.10.0"
     strip-indent "^3.0.0"
 
-svelte@^3.44.0:
+svelte-proxied-store@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/svelte-proxied-store/-/svelte-proxied-store-1.1.3.tgz#21e8a6859791f1812ffcc31e2a68ef23a2c4d47f"
+  integrity sha512-1bzI4Ku1st1NkPIkKGB6i45zQ+lge6J/1Mc7SvmValyQxWfryZuFZktHCOGIcJDmrO/Z0uFDPd/67xHwLyBn6w==
+
+svelte-web3@^3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/svelte-web3/-/svelte-web3-3.4.1.tgz#35c3003101de1466a6b457640cb115452683e788"
+  integrity sha512-r3dv/aTTsLw0BxgWdNyQIlOiw/wUCoLXcPldgmTblRV58HOTDvGow8CevrH/A+X5mI8TFKqnvcPD/JaSMxN3AQ==
+  dependencies:
+    svelte "^3.0.0"
+    svelte-proxied-store "^1.1.3"
+
+svelte@^3.0.0, svelte@^3.44.0:
   version "3.48.0"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.48.0.tgz#f98c866d45e155bad8e1e88f15f9c03cd28753d3"
   integrity sha512-fN2YRm/bGumvjUpu6yI3BpvZnpIm9I6A7HR4oUNYd7ggYyIwSA/BX7DJ+UXXffLp6XNcUijyLvttbPVCYa/3xQ==
