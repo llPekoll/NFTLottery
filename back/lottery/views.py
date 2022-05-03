@@ -4,7 +4,7 @@ import json
 from django.forms import model_to_dict
 from django.http import JsonResponse
 from django.shortcuts import render
-from .models import Lottery, Ticket, Price, Winner
+from .models import Lottery, Ticket, Trad
 from datetime import datetime
 
 
@@ -44,7 +44,7 @@ def get_history(request):
 
     # lotteries_dict = [model_to_dict(lottery)for lottery in lotteries][-2:]
     lotteries_dict = []
-    for lottery in lotteries:
+    for lottery in lotteries[-3:]:
         lottery_dict = model_to_dict(lottery)
         lottery_dict["winners"] = [
             model_to_dict(winner) for winner in lottery.winners.all()
@@ -55,3 +55,10 @@ def get_history(request):
         lotteries_dict.append(lottery_dict)
     print(lotteries_dict)
     return JsonResponse({"lotteries": lotteries_dict})
+
+
+def get_trad(request):
+    trads = Trad.objects.all()
+    trads_dict = {trad["key"]: trad["content"] for trad in trads}
+    return JsonResponse(trads_dict)
+    

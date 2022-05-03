@@ -52,3 +52,12 @@ class Winner(models.Model):
 
     def __str__(self):
         return str(self.lotery_nb)
+
+
+class Trad(models.Model):
+    
+    key = models.CharField(max_length=32, unique=True)
+    content = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):
+        return self.key
