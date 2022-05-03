@@ -240,16 +240,65 @@
 			}
 	  })
 </script>
+<section class=" hero tracking-widest">
 <Header {subContractAddress} {provider} {subContractAbi}/>
-<h1 class="text-3xl font-bold underline text-red-400 text-center">
-    NFTL Lottery
+<h1 class="text-3xl font-bold text-yellow-300 text-center  pt-32 drop-shadow-xl">
+    The Lottery Test
 </h1>
-<section class="py-32">
-	<div class="text-center px-30">
-		<button on:click={SendTransactionNFTL} class="bg-orange-500 rounded-full px-20 py-4">
-			<p class="text-3xl font-bold">
+	<div  class="text-center w-1/2 mx-auto text-white">
+		<p class="text-6xl pt-20  font-semibold drop-shadow-xl">
+			Prices:
+		</p>
+		<ol class="text-3xl text-left w-2/3 mx-auto py-10 font-normal">
+			<li class="text-5xl py-2 drop-shadow-xl">
+				1. 1 kilo de cacahouette
+			</li>
+			<li class="text-4xl py-2 drop-shadow-xl">
+				2. 1 NFTL
+			</li>
+			<li>
+				3. 1 BNB
+			</li>
+		</ol>
+	</div>
+	<div class="text-center px-30 mb-20 tracking-widest">
+		<button on:click={SendTransactionNFTL} class="bg-gradient-to-br from-pink-500 to-orange-400 rounded-full px-20 py-4 text-white border-4 border-orange-800 drop-shadow-md">
+			<p class="text-3xl font-semithin drop-shadow-xl">
 				Buy Ticket 
 			</p>
 		</button>
 	</div>
+
+	<div class=" bg-trasparent">
+		<svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none" class=" inline-block align-bottom relative w-full h-32">
+		<polygon points="100 0 100 10 0 10" />
+		</svg>
+	</div>
 </section>
+<section>
+
+	<h2 class="text-4xl text-center mx-auto">Last Winners:</h2>
+
+	<ol class="text-3xl text-left w-1/2 mx-auto py-10 font-normal">
+		<li class="text-5xl py-2 drop-shadow-xl">
+			1. 1 kilo de cacahouette -> 0x3erfsf
+		</li>
+		<li class="text-4xl py-2 drop-shadow-xl">
+			2. 1 NFTL -> 0x3erfsf
+		</li>
+		<li>
+			3. 1 BNB -> 0x3erfsf
+		</li>
+	</ol>
+
+</section>
+<style>
+	svg{
+		fill:white
+	}
+	.hero
+	{
+		font-family: 'Kanit', sans-serif;
+		background-image: linear-gradient(110deg, #3D516D 47%, #546C8E 91%);
+	}
+</style>
