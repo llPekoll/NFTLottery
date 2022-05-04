@@ -1,18 +1,18 @@
 <script>
 	import { onMount } from 'svelte';
-    export let provider;
-    export let subContractAddress;
-    export let subContractAbi;
+	export let provider;
+	export let subContractAddress;
+	export let subContractAbi;
+	export let account;
+	export let trad;
 
-	let accounts;
-	let account;
-	let amount = 'wallet';
-    let connectWallet;
+	let amount = trad.wallet;
+	let connectWallet;
 
 	onMount(async () => {
-        provider = new ethers.providers.Web3Provider(window.ethereum)
+		provider = new ethers.providers.Web3Provider(window.ethereum);
 		connectWallet = async () => {
-			accounts = await window.ethereum
+			const accounts = await window.ethereum
 				.request({
 					method: 'eth_requestAccounts'
 				})
@@ -20,20 +20,22 @@
 					console.log(err.code);
 				});
 			account = accounts[0];
-            let subContract = new ethers.Contract(subContractAddress, subContractAbi, provider)
-            let bal = await subContract.balanceOf(account)
-            amount = bal.toString() / Math.pow(10, 9)
-			amount = `${amount} $NFTL`;
+			let subContract = new ethers.Contract(subContractAddress, subContractAbi, provider);
+			let bal = await subContract.balanceOf(account);
+			amount = bal.toString() / Math.pow(10, 9);
+			amount = `${amount.toFixed(2)} $NFTL`;
 		};
 	});
 </script>
 
 <section class="px-20 py-10">
 	<div class="float-left text-3xl  italic pt-2 drop-shadow-xl">
-        <img src="tgf-URPS.png" alt="logo" class="w-16">
-    </div>
+		<img src="tgf-URPS.png" alt="logo" class="w-16" />
+	</div>
 	<div class="float-right flex oo">
-		<div class="rounded-full border-2 border-rose-600 p-2 bg-gradient-to-br from-pink-500 to-orange-400 z-10 drop-shadow-xl">
+		<div
+			class="rounded-full border-2 border-rose-600 p-2 bg-gradient-to-br from-pink-500 to-orange-400 z-10 drop-shadow-xl"
+		>
 			<svg width="2em" height="2em" viewBox="0 0 256 256"
 				><path
 					fill=""
@@ -42,11 +44,10 @@
 			>
 		</div>
 		<button on:click={connectWallet}>
-            
 			<div
 				class="text-xl text-white font-semibold rounded-full border-2 border-rose-600 px-10 h-10 mt-0.5 -ml-8 z-0 pt-1 bg-gradient-to-br from-pink-500 to-orange-400 drop-shadow-xl"
 			>
-				<p class="">
+				<p class="tracking-widest">
 					{amount}
 				</p>
 			</div>
@@ -54,11 +55,12 @@
 	</div>
 	<div class="clear-both" />
 </section>
+
 <style>
-    path{
-     @apply fill-white;
-    }
-    .oo{
-        transform: scale(1.5);
-    }
+	path {
+		@apply fill-white;
+	}
+	.oo {
+		transform: scale(1.5);
+	}
 </style>

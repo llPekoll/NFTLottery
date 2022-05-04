@@ -9,7 +9,8 @@ class Lottery(models.Model):
     date_start = models.DateTimeField(default=now)
     date_end = models.DateTimeField(default=now)
     duration = models.IntegerField(default=7)
-    ticket_price = models.IntegerField(default=10)
+    ticket_price = models.IntegerField(default=1000)
+    cashin_display = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         self.date_end = self.date_start + timedelta(days=self.duration)
@@ -21,6 +22,7 @@ class Lottery(models.Model):
 
 class Ticket(models.Model):
     ticket_holder_wallet_address = models.CharField(max_length=128)
+    ticket_nb = models.IntegerField(default=10)
     date = models.DateTimeField(default=now)
     lotery_nb = models.ForeignKey(
         Lottery, related_name="tickets", on_delete=models.CASCADE
@@ -55,7 +57,7 @@ class Winner(models.Model):
 
 
 class Trad(models.Model):
-    
+
     key = models.CharField(max_length=32, unique=True)
     content = models.CharField(max_length=255, blank=True)
 

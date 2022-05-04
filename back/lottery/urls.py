@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import get_lottery, post_ticket, get_history, get_trad
 from django.views.decorators.csrf import csrf_exempt
+
+from .views import get_history, get_lottery, get_trad, post_ticket
 
 urlpatterns = [
     path("lottery/", get_lottery),

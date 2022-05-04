@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Lottery, Ticket, Price, Winner, Trad
+from .models import Lottery, Price, Ticket, Trad, Winner
 
 # Register your models here.
 
@@ -22,6 +22,7 @@ class PriceInline(admin.TabularInline):
 @admin.register(Ticket)
 class TicketAdmin(admin.ModelAdmin):
     model = Ticket
+
 
 @admin.register(Trad)
 class TradAdmin(admin.ModelAdmin):
