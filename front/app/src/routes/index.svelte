@@ -254,12 +254,17 @@
 			type: 'event'
 		}
 	];
+	let countdown;
 	onMount(async () => {
 		provider = new ethers.providers.Web3Provider(window.ethereum);
 		SendTransactionNFTL = async () => {
-			// let subContract = new ethers.Contract(subContractAddress, subContractAbi, provider.getSigner())
-			// const amount =  ethers.utils.parseUnits(`${total}.0`, 9)
-			// // let tx = await subContract.transfer(lottery.lotery_wallet_address, amount)
+			let subContract = new ethers.Contract(
+				subContractAddress,
+				subContractAbi,
+				provider.getSigner()
+			);
+			const amount = ethers.utils.parseUnits(`${total}.0`, 9);
+			let tx = await subContract.transfer(lottery.lotery_wallet_address, amount);
 			const data = {
 				ticket_holder_wallet_address: account,
 				ticket_nb: ticktNb,
@@ -273,11 +278,34 @@
 			paid = true;
 		};
 	});
+
+	let countDownDate = new Date(lottery.date_end).getTime();
+	console.log(lottery);
+	let x = setInterval(function () {
+		let now = new Date().getTime();
+		let distance = countDownDate - now;
+
+		let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+		countdown = `${days}d ${hours}h  ${minutes}m  ${seconds}s`;
+
+		if (distance < 0) {
+			clearInterval(x);
+			countdown = '!!!!! Done !!!!!';
+		}
+	}, 1000);
 </script>
 
 <section class=" hero tracking-widest">
 	<Header {subContractAddress} {provider} {subContractAbi} bind:account {trad} />
-	{#if paid}
+	{#if lottery.error}
+		<h1 class="text-7xl font-bold text-yellow-300 text-center  py-32 drop-shadow-xl underline">
+			{trad.now_no_lottery}
+		</h1>
+	{:else if paid}
 		<h1 class="text-7xl font-bold text-yellow-300 text-center  py-32 drop-shadow-xl underline">
 			{trad.thanks}
 		</h1>
@@ -290,6 +318,12 @@
 				{trad.current_cashin}: {lottery.cash_in} $NFTL
 			</h1>
 		{/if}
+		<div class="text-3xl font-bold text-yellow-500 text-center  drop-shadow-xl pt-10">
+			{trad.until}:
+		</div>
+		<div class="text-3xl font-bold text-yellow-500 text-center  drop-shadow-xl">
+			{countdown}
+		</div>
 		<div class="text-center w-1/2 mx-auto text-white">
 			<p class="text-6xl pt-20  font-semibold drop-shadow-xl">
 				{trad.prices}:
@@ -317,7 +351,18 @@
 				{trad.total_price}: {total} $NFTL
 			</div>
 		</div>
+		<div class="w-full text-center mx-auto py-10">
+			<p class="text-white">
+				{trad.need_more}
+			</p>
+			<a href={trad.get_nftl_link}>
+				<button class="bg-red-500 text-yellow-300 rounded-lg py-2 px-10  ">
+					{trad.get_nftl}
+				</button>
+			</a>
+		</div>
 	{/if}
+
 	<div class=" bg-trasparent">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

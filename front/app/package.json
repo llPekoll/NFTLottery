@@ -39,6 +39,7 @@
 		"@sveltejs/adapter-node": "^1.0.0-next.73",
 		"axios": "^0.27.2",
 		"forever": "^4.0.3",
+		"svelte-countdown": "^1.1.0",
 		"svelte-web3": "^3.4.1"
 	}
 }
