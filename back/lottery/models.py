@@ -41,7 +41,7 @@ class Price(models.Model):
     gain = models.CharField(max_length=255)
 
     def __str__(self):
-        return str(self.place)
+        return str(f"{self.place}_{self.gain}")
 
 
 class Winner(models.Model):
@@ -59,7 +59,7 @@ class Winner(models.Model):
 class Trad(models.Model):
 
     key = models.CharField(max_length=32, unique=True)
-    content = models.CharField(max_length=255, blank=True)
+    content = models.TextField()
 
     def __str__(self):
         return self.key

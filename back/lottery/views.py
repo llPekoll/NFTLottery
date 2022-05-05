@@ -11,7 +11,7 @@ from .models import Lottery, Ticket, Trad, Winner
 
 
 def get_lottery(request):
-    """ Returns the current lottery """
+    """Returns the current lottery"""
     if not request.method == "GET":
         return JsonResponse({"error": {"message": "method not allowed"}}, status=405)
     lottery = Lottery.objects.last()
@@ -37,7 +37,7 @@ def get_lottery(request):
 
 
 def post_ticket(request):
-    """ Inser new ticket in the database """
+    """Inser new ticket in the database"""
     if not request.method == "POST":
         return JsonResponse({"error": {"message": "method not allowed"}}, status=405)
     body_unicode = request.body.decode("utf-8")
@@ -54,7 +54,7 @@ def post_ticket(request):
 
 
 def get_history(request):
-    """ Returns tbe previous lottery with the winners """
+    """Returns tbe previous lottery with the winners"""
     last = Lottery.objects.last()
     winners = Winner.objects.filter(lotery_nb=last.lotery_nb - 1)
     winners_list = []
