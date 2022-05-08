@@ -6,3 +6,4 @@ node_modules
 .env
 .env.*
 !.env.example
+!front/app/src/lib/env.js
