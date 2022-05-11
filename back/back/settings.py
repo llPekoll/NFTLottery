@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['http://admin.nftlgame.com', 'localhost']
 
+CSRF_TRUSTED_ORIGINS = ['http://admin.nftlgame.com']
+
 
 # Application definition
 
