@@ -93,7 +93,7 @@
 		/* letter-spacing: -1px; */
 		display: grid;
 		grid-template-columns: auto min-content auto;
-		filter: url('#warp');
+		/* filter: url('#warp'); */
 		mix-blend-mode: multiply;
 		transform: scale(0.95) translatex(8px) translatey(-9px);
 	}
