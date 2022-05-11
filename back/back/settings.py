@@ -25,7 +25,7 @@ SECRET_KEY = "$0s3hqc+o$3ajwp^fjfmgx55nxi*4af)_p@1r@^1bh$(kzpjd$"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://admin.nftlgame.com']
+ALLOWED_HOSTS = ['http://admin.nftlgame.com', 'localhost']
 
 
 # Application definition
