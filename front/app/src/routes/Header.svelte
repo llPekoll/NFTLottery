@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	// import { ethers } from "https://cdn.ethers.io/lib/ethers-5.0.esm.min.js"
 	export let provider;
 	export let subContractAddress;
 	export let subContractAbi;

@@ -21,6 +21,12 @@
 	import Ticket from './Ticket.svelte';
 	import Counter from './Counter.svelte';
 
+
+  import Modal from 'svelte-simple-modal';
+  import { browser } from '$app/env';
+  import Content from './Content.svelte'
+
+
 	export let trad;
 	export let lottery;
 	export let winners;
@@ -255,6 +261,7 @@
 		}
 	];
 	let countdown;
+	let weGotBug = false;
 	onMount(async () => {
 		provider = new ethers.providers.Web3Provider(window.ethereum);
 		SendTransactionNFTL = async () => {
@@ -263,8 +270,14 @@
 				subContractAbi,
 				provider.getSigner()
 			);
+
 			const amount = ethers.utils.parseUnits(`${total}.0`, 9);
-			let tx = await subContract.transfer(lottery.lotery_wallet_address, amount);
+			try{
+				let tx = await subContract.transfer(lottery.lotery_wallet_address, amount);
+			} catch {
+				weGotBug = true
+				return 0;
+			}
 			const data = {
 				ticket_holder_wallet_address: account,
 				ticket_nb: ticktNb,
@@ -280,7 +293,7 @@
 	});
 
 	let countDownDate = new Date(lottery.date_end).getTime();
-	console.log(lottery);
+	
 	let x = setInterval(function () {
 		let now = new Date().getTime();
 		let distance = countDownDate - now;
@@ -336,19 +349,24 @@
 				{/each}
 			</ol>
 		</div>
+		<div class="text-center text-white">
+			{trad.ticket_nb}
+			<Counter bind:ticktNb />
+			<div class="text-3xl font-bold text-yellow-300 text-center pt-5 drop-shadow-xl">
+				{trad.total_price}: {total} $NFTL
+			</div>
+		</div>
+	{#if browser}
+	<Modal>
+		<Content bind:weGotBug/>
+	</Modal>
+	{/if}
 		<div class="text-center px-30 mb-20 tracking-widest pt-20 ">
 			<button on:click={SendTransactionNFTL} class="drop-shadow-md">
 				<Ticket />
 			</button>
 			<div class="text-center text-white pt-5 text-lg">
 				{trad.ticket_price}: ${lottery.ticket_price}NFTL
-			</div>
-		</div>
-		<div class="text-center text-white">
-			{trad.ticket_nb}
-			<Counter bind:ticktNb />
-			<div class="text-3xl font-bold text-yellow-300 text-center pt-5 drop-shadow-xl">
-				{trad.total_price}: {total} $NFTL
 			</div>
 		</div>
 		<div class="w-full text-center mx-auto py-10">
