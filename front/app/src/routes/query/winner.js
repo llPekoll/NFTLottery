@@ -2,6 +2,7 @@ import axios from 'axios';
 import { env } from '$lib/env';
 
 export async function get({ params }) {
+	console.log("winner")
 	const url = `${env.VITE_BACKEND_DNS}/history/`;
 	let response;
 	try {
